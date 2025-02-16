@@ -18,7 +18,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div>
-          day 123
           {children}
         </div>
       </body>
