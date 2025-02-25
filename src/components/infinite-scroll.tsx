@@ -1,5 +1,5 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-obser";
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 interface InfiniteScrollProps {
