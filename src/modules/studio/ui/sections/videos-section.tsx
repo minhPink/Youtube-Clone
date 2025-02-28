@@ -18,10 +18,11 @@ import { VideoThumbnail } from "@/modules/videos/ui/components/video-thumbnail";
 import { snakeCaseToTitle } from "@/lib/utils";
 import { format } from "date-fns";
 import { Globe2Icon, LockIcon } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const VideosSection = () => {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<VideoSectionSkeleton />}>
       <ErrorBoundary fallback={<p>Error...</p>}>
         <VideosSectionSuspense />
       </ErrorBoundary>
@@ -29,6 +30,48 @@ export const VideosSection = () => {
   );
 };
 
+const VideoSectionSkeleton = () => {
+  return (
+    <>
+      <div className="border-y">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="pl-6 w-[510px]">Video</TableHead>
+              <TableHead>Visibility</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Date</TableHead>
+              <TableHead className="text-right">Views</TableHead>
+              <TableHead className="text-right">Comments</TableHead>
+              <TableHead className="text-right pr-6">Likes</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <TableRow key={index}>
+                <TableCell className="pl-6">
+                  <div className="flex items-center gap-4">
+                    <Skeleton className="h-20 w-36" />
+                    <div className="flex flex-col gap-2">
+                      <Skeleton className="w-[100px] h-4" />
+                      <Skeleton className="w-[150px] h-3" />
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell>Visibility</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Views</TableCell>
+                <TableCell>Comments</TableCell>
+                <TableCell>Likes</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </>
+  );
+};
 const VideosSectionSuspense = () => {
   const [videos, query] = trpc.studio.getMany.useSuspenseInfiniteQuery(
     {
