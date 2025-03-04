@@ -82,7 +82,7 @@ export const POST = async (request: Request) => {
           muxStatus: data.status,
           muxAssetId: data.id,
           muxPlaybackId: playbackId,
-          thumbnail: thumbnailUrl,
+          thumbnailUrl: thumbnailUrl,
           previewUrl: previewUrl,
           duration: duration,
         })

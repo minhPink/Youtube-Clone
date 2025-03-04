@@ -81,6 +81,7 @@ const VideosSectionSuspense = () => {
       getNextPageParam: (lastPage) => lastPage.nextCursor,
     }
   );
+
   return (
     <div>
       <div className="border-y">
@@ -110,7 +111,7 @@ const VideosSectionSuspense = () => {
                       <div className="flex items-center gap-4">
                         <div className="relative w-36 aspect-video shrink-0">
                           <VideoThumbnail
-                            imageUrl={video.thumbnail}
+                            imageUrl={video.thumbnailUrl}
                             previewUrl={video.previewUrl}
                             title={video.title}
                             duration={video.duration || 0}
