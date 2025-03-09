@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { users, videos, videoUpdateSchema } from "@/db/schema";
+import { users, videos, videoUpdateSchema, videoViews } from "@/db/schema";
 import { mux } from "@/lib/mux";
 import {
   baseProcedure,
@@ -22,6 +22,10 @@ export const videoRouter = createTRPCRouter({
           user: {
             ...getTableColumns(users),
           },
+          videoCountViews: db.$count(
+            videoViews,
+            eq(videoViews.videoId, videos.id)
+          ),
         })
         .from(videos)
         .where(eq(videos.id, input.id))
