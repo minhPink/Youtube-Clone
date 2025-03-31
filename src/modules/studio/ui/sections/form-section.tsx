@@ -41,6 +41,7 @@ import {
   RotateCcwIcon,
   SparklesIcon,
   TractorIcon,
+  TrashIcon,
 } from "lucide-react";
 import { videoUpdateSchema } from "@/db/schema";
 import { toast } from "sonner";
@@ -210,7 +211,7 @@ export const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
     update.mutate(data);
   };
 
-  const fullUrl = `${APP_URL || "http://localhost:3000"}/videos/${videoId}`;
+  const fullUrl = `${APP_URL}/videos/${videoId}`;
 
   const [isCopied, setIsCopied] = useState(false);
 
@@ -258,16 +259,16 @@ export const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem
+                  {/* <DropdownMenuItem
                     onClick={() => revalidate.mutate({ id: videoId })}
                   >
                     <RotateCcwIcon className="size-4 mr-2" />
                     Revalidate
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                   <DropdownMenuItem
                     onClick={() => remove.mutate({ id: videoId })}
                   >
-                    <TractorIcon className="size-4 mr-2" />
+                    <TrashIcon className="size-4 mr-2" />
                     Delete
                   </DropdownMenuItem>
                 </DropdownMenuContent>
