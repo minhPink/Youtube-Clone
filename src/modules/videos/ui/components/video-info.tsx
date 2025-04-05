@@ -16,7 +16,7 @@ export const VideoInfoSkeleton = () => {
   return (
     <div className="flex gap-3">
       <Skeleton className="size-10 flex-shrink-0 rounded-full" />
-      <div>
+      <div className="flex flex-1 flex-col gap-2">
         <Skeleton className="h-5 w-[90%]" />
         <Skeleton className="h-5 w-[70%]" />
       </div>
