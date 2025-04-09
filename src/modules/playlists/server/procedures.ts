@@ -1,32 +1,8 @@
 import { db } from "@/db";
-import {
-  subscriptions,
-  users,
-  videoReactions,
-  videos,
-  videoUpdateSchema,
-  videoViews,
-} from "@/db/schema";
-import { mux } from "@/lib/mux";
-import {
-  baseProcedure,
-  createTRPCRouter,
-  protectedProcedure,
-} from "@/trpc/init";
-import { TRPCError } from "@trpc/server";
-import {
-  and,
-  desc,
-  eq,
-  getTableColumns,
-  inArray,
-  isNotNull,
-  lt,
-  or,
-} from "drizzle-orm";
+import { users, videoReactions, videos, videoViews } from "@/db/schema";
+import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
+import { and, desc, eq, getTableColumns, lt, or } from "drizzle-orm";
 import { z } from "zod";
-import { UTApi } from "uploadthing/server";
-import { workflow } from "@/lib/workflow";
 
 export const playlistsRouter = createTRPCRouter({
   getHistory: protectedProcedure
